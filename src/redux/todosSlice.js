@@ -24,11 +24,12 @@ const todosSlice = createSlice({
         toggleComplete: (state, action) => {
             const idx = state.findIndex(todo => todo.id === action.payload.id);
             state[idx].completed = action.payload.completed;
-        }
+        },
+        deleteTodo: (state, action) => state.filter(todo => todo !== action.payload.id),
     }
 });
 
 //creating actions
-export const { addTodo, toggleComplete } = todosSlice.actions;
+export const { addTodo, toggleComplete, deleteTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;
