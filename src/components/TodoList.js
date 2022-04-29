@@ -1,23 +1,17 @@
+import React from "react";
 import Todos from "./Todos";
-//https://react-redux.js.org/api/hooks#useselector
 import { useSelector } from "react-redux";
 
 const TodoList = () => {
-    const todos = useSelector((state) => state.todos);
+    const todos = useSelector((state) => state.todos)
 
-    // const todos = [
-    //     {id: 1, title: 'task1', completed: false},
-    //     {id: 2, title: 'task2', completed: false},
-    //     {id: 3, title: 'task3', completed: false},
-    //     {id: 4, title: 'task4', completed: false},
-    //     {id: 5, title: 'task5', completed: false},
-    // ];
-
-    return (
-        <>
-        {todos.map(todo => <Todos id={todo.id} title={todo.title} completed={todo.completed}/>)}
-        </>
-    );
-}
+  return (
+    <ul className="list-group">
+      {todos.map((todo, idx) => (
+        <Todos key ={idx} id={todo.id} title={todo.title} completed={todo.completed} />
+      ))}
+    </ul>
+  );
+};
 
 export default TodoList;
