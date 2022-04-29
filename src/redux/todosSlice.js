@@ -21,15 +21,15 @@ const todosSlice = createSlice({
             //pushes the new todo into the array. redux takes new state and saves to the store
             state.push(newTodo)
         },
-        toggleComplete: (state, action) => {
+        toggleCompletedTodos: (state, action) => {
             const idx = state.findIndex(todo => todo.id === action.payload.id);
             state[idx].completed = action.payload.completed;
         },
-        deleteTodo: (state, action) => state.filter(todo => todo !== action.payload.id),
-    }
+        deleteTodo: (state, action) => state.filter(todo => todo.id !== action.payload.id)
+    },
 });
 
 //creating actions
-export const { addTodo, toggleComplete, deleteTodo } = todosSlice.actions;
+export const { addTodo, toggleCompletedTodos, deleteTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;
