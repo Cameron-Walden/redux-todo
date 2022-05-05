@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Todos from "./Todos";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getTodos } from "../redux/todosSlice";
 
 const TodoList = () => {
-    const todos = useSelector((state) => state.todos)
+  const dispatch = useDispatch()
+  const todos = useSelector((state) => state.todos)
+
+    // gets called when loaded first time, dispatches getTodos function which will grab all the todos and add to state
+    useEffect(() => {
+      dispatch(getTodos());
+    }, [dispatch])
 
   return (
     <ul className="list-group">
